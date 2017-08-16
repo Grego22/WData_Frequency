@@ -4,11 +4,12 @@ class Wordfreq
     'were', 'will', 'with']
 
   def initialize(filename)
-    contents = File.read(filename).downcase.gsub(/[^a-z0-9\s]/i, '')
-    puts contents
+    @contents = File.read(filename).downcase.gsub(/[^a-z0-9\s]/i, '')
   end
 
   def frequency(word)
+    pattern = /\s#{word}\s/i
+    @contents.scan(pattern).count
   end
 
   def frequencies
