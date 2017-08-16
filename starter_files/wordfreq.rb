@@ -4,6 +4,7 @@ class Wordfreq
     'were', 'will', 'with']
 
   def initialize(filename)
+    contents = file.read("emancipation_proclamation.txt")
   end
 
   def frequency(word)
