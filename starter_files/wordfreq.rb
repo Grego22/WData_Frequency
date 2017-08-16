@@ -4,7 +4,8 @@ class Wordfreq
     'were', 'will', 'with']
 
   def initialize(filename)
-    contents = file.read(filename).upcase
+    contents = File.read(filename).downcase.gsub(/[^a-z0-9\s]/i, '')
+    puts contents
   end
 
   def frequency(word)
