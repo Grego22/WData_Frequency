@@ -4,15 +4,22 @@ class Wordfreq
     'were', 'will', 'with']
 
   def initialize(filename)
-    @contents = File.read(filename).downcase.gsub(/[^a-z0-9\s]/i, '')
+    contents = File.read(filename).downcase.gsub("--", " ")
+    @contents = contents.gsub(/[^a-z0-9\s]/i, '')
+    @words ={}
+    wordArray.each do |word|
+      puts @word
+    end
   end
 
   def frequency(word)
-    pattern = /\s#{word}\s/i
-    @contents.scan(pattern).count
+    # pattern = /\s#{word}\s/i
+    # @contents.scan(pattern).count
   end
 
   def frequencies
+  #   patternfreq = /\s#{frequencies}\s/i
+  #  @contents.scan(patternfreq)
   end
 
   def top_words(number)
