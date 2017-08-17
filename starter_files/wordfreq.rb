@@ -6,23 +6,34 @@ class Wordfreq
   def initialize(filename)
     contents = File.read(filename).downcase.gsub("--", " ")
     @contents = contents.gsub(/[^a-z0-9\s]/i, '')
+    wordArray = @contents.split(" ") - STOP_WORDS
+
     @words ={}
+
     wordArray.each do |word|
-      puts @word
+      if @words.include?(word)
+        @words[word] += 1
+      else
+        @words[word] =1
     end
   end
+end
 
   def frequency(word)
+     @words[word]
+    # p word
     # pattern = /\s#{word}\s/i
     # @contents.scan(pattern).count
   end
 
   def frequencies
+    @words
   #   patternfreq = /\s#{frequencies}\s/i
   #  @contents.scan(patternfreq)
   end
 
   def top_words(number)
+    @words.sort_by {|word, count| count}.reverse.take(5)
   end
 
   def print_report
